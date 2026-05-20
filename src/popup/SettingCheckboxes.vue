@@ -27,6 +27,7 @@
     } from 'vue';
 
     interface SettingItem {
+        ref?: string,
         settingKey: string,
         label: string,
         title?: string,

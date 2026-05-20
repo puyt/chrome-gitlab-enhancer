@@ -1,5 +1,6 @@
 {
   "name": "ux-enhancer-for-gitlab",
+  "version": "4.9.2",
   "private": true,
   "type": "module",
   "scripts": {

@@ -5,6 +5,12 @@
 GitLab is gradually updating its UI as part of the "work items" overhaul. Since this extension heavily depends on the DOM, some features might not function properly with the new UI.
 I only have access to the GitLab version used at our company, so I might not catch every change. I'm working on fixing the broken features one by one, while trying to make it backwards compatible which I cannot verify.
 
+## 4.9.2 - 2026.05 Build 3 (20/05/2026)
+
+### 🪲 Bug Fixes
+
+- **mr**: fix broken "Mark as viewed and open next file" function with new GitLab UI by @Darkmessage in [#53](https://github.com/puyt/ux-enhancer-for-gitlab/pull/53).
+
 ## 4.9.0 - 2026.05 (09/05/2026)
 
 ### ✨ Features

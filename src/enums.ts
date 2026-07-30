@@ -33,6 +33,7 @@ export const enum Preference {
     MR_USE_THREADS_BY_DEFAULT = 'mr_use_threads_by_default',
     MR_RENDER_PROJECT_LOGO = 'mr_render_project_logo',
     MR_DIM_DRAFT = 'mr_dim_draft',
+    MR_SEPARATE_DRAFTS = 'mr_separate_drafts',
     MR_HOTKEY_VIEWED = 'mr_hotkey_viewed',
     MR_HOTKEY_VIEWED_NEXT = 'mr_hotkey_viewed_next',
 }

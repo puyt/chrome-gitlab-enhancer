@@ -10,6 +10,7 @@
     "build:firefox": "npm run build && mv dist/manifest_firefox.json dist/manifest.json && cd dist && zip -rq ../firefox-dist.zip * && cd ../src && zip -rq ../src.zip * && cd ..",
     "build-only": "vite build",
     "type-check": "vue-tsc --noEmit -p tsconfig.app.json --composite false",
+    "test": "node --test src/**/__tests__/*.test.mjs",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
   },
   "dependencies": {

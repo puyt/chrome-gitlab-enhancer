@@ -35,7 +35,10 @@ export function useHighlightMyIssuesMrs() {
             }
 
             if (isIssuePage.value && isProjectPage.value) {
-                const avatarElements = document.querySelectorAll(`.issuable-meta a.gl-avatar-link[href$="/${username}"]`);
+                const avatarElements = document.querySelectorAll([
+                    `li.issue a[data-testid="issuable-author"][href$="/${username}"]`,
+                    `.issuable-meta a.gl-avatar-link[href$="/${username}"]`,
+                ].join(', '));
                 avatarElements.forEach((element) => {
                     const parentElement = element.closest('li.issue') as HTMLElement | null;
 
@@ -49,7 +52,10 @@ export function useHighlightMyIssuesMrs() {
         }
 
         if (isHighlightMyMrEnabled.value && isMergeRequestPage.value && isProjectPage.value) {
-            const avatarElements = document.querySelectorAll(`.issuable-info-container li:not(.issuable-reviewers) a.author-link[href$="/${username}"]`);
+            const avatarElements = document.querySelectorAll([
+                `li.merge-request a[data-testid="issuable-author"][href$="/${username}"]`,
+                `.issuable-info-container li:not(.issuable-reviewers) a.author-link[href$="/${username}"]`,
+            ].join(', '));
             avatarElements.forEach((element) => {
                 const parentElement = element.closest('li.merge-request') as HTMLElement | null;
 

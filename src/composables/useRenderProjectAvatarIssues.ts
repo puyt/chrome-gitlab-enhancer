@@ -34,10 +34,12 @@ export function useRenderProjectAvatarIssues() {
             return;
         }
 
+        const hrefFragment = `/${projectPath}/-/`;
+
         if (isInjectAvatarTodoEnabled.value && isTodoPage.value) {
-            let targetElements = document.querySelectorAll(`ul.todos-list a.todo-target-link[href*="${projectPath}"]`);
+            let targetElements = document.querySelectorAll(`ul.todos-list a.todo-target-link[href*="${hrefFragment}"]`);
             if (targetElements.length === 0) {
-                targetElements = document.querySelectorAll(`ol[data-testid="todo-item-list"] li > a.gl-link[href*="${projectPath}"]`);
+                targetElements = document.querySelectorAll(`ol[data-testid="todo-item-list"] li > a.gl-link[href*="${hrefFragment}"]`);
             }
 
             targetElements.forEach((targetElement) => {
@@ -80,7 +82,7 @@ export function useRenderProjectAvatarIssues() {
 
         if (isInjectAvatarIssueEnabled.value) {
             if (isIssuePage.value) {
-                const targetElements = document.querySelectorAll(`li.issue a.issue-title-text[href*="${projectPath}"]`);
+                const targetElements = document.querySelectorAll(`li.issue a.issue-title-text[href*="${hrefFragment}"]`);
                 targetElements.forEach((targetElement) => {
                     const parentElement = targetElement?.parentElement?.parentElement?.parentElement || null;
                     if (parentElement && !parentElement.children?.[0].classList.contains('glab-enhancer-browser-extension__project-avatar')) {
@@ -109,7 +111,7 @@ export function useRenderProjectAvatarIssues() {
                     // Backward compatibility with old GitLab structure
                     targetElements = document.querySelectorAll(`li.board-card span[title="${projectPath}"]`);
                 }
-                
+
                 targetElements.forEach((targetElement) => {
                     if (targetElement.parentElement && targetElement.previousElementSibling) {
                         const imgElement = document.createElement('img');
@@ -126,7 +128,7 @@ export function useRenderProjectAvatarIssues() {
         }
 
         if (isInjectAvatarMergeRequestEnabled.value && (isMergeRequestPage.value && (isGroupPage.value || isProjectPage.value))) {
-            const targetElements = document.querySelectorAll(`.issuable-list .merge-request-title-text a[href*="${projectPath}"], .issuable-list .issue-title a[href*="${projectPath}"]`);
+            const targetElements = document.querySelectorAll(`.issuable-list .merge-request-title-text a[href*="${hrefFragment}"], .issuable-list .issue-title a[href*="${hrefFragment}"]`);
 
             targetElements.forEach((targetElement) => {
                 const parentElement = targetElement?.closest('li') || null;

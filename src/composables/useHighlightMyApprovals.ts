@@ -1,13 +1,13 @@
-import { useExtractProjectPaths } from './useExtractProjectPaths';
-import { shallowRef } from 'vue';
 import {
     useFetch,
     watchDebounced,
 } from '@vueuse/core';
 import { storeToRefs } from 'pinia';
-import { useExtensionStore } from '../store';
+import { shallowRef } from 'vue';
 import { Preference } from '../enums';
+import { useExtensionStore } from '../store';
 import { usePageDetectionStore } from '../stores';
+import { useExtractProjectPaths } from './useExtractProjectPaths';
 
 export function useHighlightMyApprovals(gitlabUserId: number) {
     const { isMergeRequestPage } = storeToRefs(usePageDetectionStore());
@@ -55,7 +55,7 @@ export function useHighlightMyApprovals(gitlabUserId: number) {
                 if (isApproved) {
                     const referenceEl = document.querySelector(`.issuable-list .issuable-main-info a[href="/${projectPath}/-/merge_requests/${iid}"]`);
                     const liEl = referenceEl?.closest('li');
-                    const badge = liEl?.querySelector(`[data-testid="mr-appovals"]`);
+                    const badge = liEl?.querySelector('[data-testid="mr-approvals"], [data-testid="mr-appovals"]');
 
                     if (badge && !badge.classList.contains('badge-success')) {
                         badge.classList.add('badge-info');

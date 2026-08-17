@@ -1,6 +1,6 @@
 {
   "name": "UX Enhancer for GitLab",
-  "version": "4.9.2",
+  "version": "4.10.0",
   "description": "A browser extension that enhances your GitLab experience.",
   "manifest_version": 3,
   "author": "Sven Depondt",

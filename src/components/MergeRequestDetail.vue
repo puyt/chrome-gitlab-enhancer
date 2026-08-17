@@ -375,7 +375,9 @@
         window.addEventListener('scroll', debouncedRender);
 
         window.addEventListener('message', (event) => {
-            if (event.data.type === 'browser-request-completed' && !event.data.data.url.includes('is_custom=1')) {
+            if (event.data.type === 'browser-request-completed'
+                && !event.data.data.url.includes('is_custom=1')
+                && event.data.data.method !== 'GET') {
                 debouncedFetchMrDiscussions?.();
             }
         });

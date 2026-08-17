@@ -204,10 +204,17 @@
         return items;
     });
 
-    function fetchDiscussions() {
+    function fetchDiscussions(isForced: boolean = false) {
         extractIssuableIds.value.forEach((iid) => {
             const path = getProjectPath(iid);
             const id = getIid(iid);
+            if (!id) {
+                return;
+            }
+
+            if (!isForced && discussions.value.has(id)) {
+                return;
+            }
 
             const endpoint = `/api/v4/projects/${encodeURIComponent(path)}/${isMergeRequest ? 'merge_requests' : 'issues'}/${id}/discussions`;
             useFetchPaging(endpoint)
@@ -264,11 +271,20 @@
     }
 
     const debouncedExtractIssuableIids = debounce(extractIssuableIids, 400);
+    const debouncedForceFetchDiscussions = debounce(() => fetchDiscussions(true), 600);
 
     function onClickHandler(event: Event) {
         const targetEl = event.target as HTMLElement;
         if (targetEl.closest('.crud-header [data-testid="crud-collapse-toggle"]')) {
             debouncedExtractIssuableIids();
+        }
+    }
+
+    function onBrowserRequestCompleted(data?: Record<string, any> | string | number) {
+        debouncedExtractIssuableIids();
+
+        if (typeof data === 'object' && data !== null && data['method'] !== 'GET') {
+            debouncedForceFetchDiscussions();
         }
     }
 
@@ -281,12 +297,12 @@
             document.addEventListener('click', onClickHandler);
         }
 
-        on(MittEventKey.BROWSER_REQUEST_COMPLETED, debouncedExtractIssuableIids);
+        on(MittEventKey.BROWSER_REQUEST_COMPLETED, onBrowserRequestCompleted);
         debouncedExtractIssuableIids();
     });
 
     onBeforeUnmount(() => {
-        off(MittEventKey.BROWSER_REQUEST_COMPLETED, debouncedExtractIssuableIids);
+        off(MittEventKey.BROWSER_REQUEST_COMPLETED, onBrowserRequestCompleted);
         document.removeEventListener('click', onClickHandler);
     });
 </script>

@@ -262,13 +262,13 @@
     } from '../assets/icons';
     import { useFetchPaging } from '../composables/useFetchPaging';
     import { useThreadsByDefault } from '../composables/useThreadsByDefault';
+    import { Preference } from '../enums';
     import { useExtensionStore } from '../store';
     import type {
         GitLabDiscussion,
         GitlabIssue,
     } from '../types';
     import SvgIcon from './SvgIcon.vue';
-    import { Preference } from '../enums';
 
     interface Props {
         iid?: number,
@@ -473,7 +473,10 @@
     onMounted(() => {
         window.addEventListener('scroll', debouncedRender);
         window.addEventListener('message', (event) => {
-            if (event.data.type === 'browser-request-completed' && !event.data.data.url.includes('is_custom=1') && !event.data.data.url.includes('realtime_changes')) {
+            if (event.data.type === 'browser-request-completed'
+                && !event.data.data.url.includes('is_custom=1')
+                && !event.data.data.url.includes('realtime_changes')
+                && event.data.data.method !== 'GET') {
                 debouncedFetchIssue();
                 debouncedFetchIssueDiscussions();
             }

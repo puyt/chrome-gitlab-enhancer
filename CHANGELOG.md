@@ -4,6 +4,12 @@
 
 GitLab is gradually updating its UI as part of the "work items" overhaul. Since this extension heavily depends on the DOM, some features might not function properly with the new UI. I only have access to the GitLab version used at our company, so I might not catch every change. I'm working on fixing the broken features one by one, while trying to make it backwards compatible which I cannot verify.
 
+## 4.10.1 - 2026.08 Build 2 (24/08/2026)
+
+### 🪲 Bug Fixes
+
+- **highlight**: fix highlight MRs and issues in group overviews. [#56](https://github.com/puyt/ux-enhancer-for-gitlab/issues/56)
+
 ## 4.10.0 - 2026.08 (17/08/2026)
 
 ### ♻️ Enhancements
@@ -12,9 +18,9 @@ GitLab is gradually updating its UI as part of the "work items" overhaul. Since 
 
 ### 🪲 Bug Fixes
 
-- **avatar**: fix issue where the same project logo is rendered on all items.
-- **mr**: fix highlight my approvals in GitLab 19.2.
-- **issues/mr**: fix highlight my issues and MRs in GitLab 19.2.
+- **avatar**: fix issue where the same project logo is rendered on all items. [#54](https://github.com/puyt/ux-enhancer-for-gitlab/issues/54)
+- **mr**: fix highlight my approvals in GitLab 19.2. [#56](https://github.com/puyt/ux-enhancer-for-gitlab/issues/56)
+- **issues/mr**: fix highlight my issues and MRs in GitLab 19.2. [#56](https://github.com/puyt/ux-enhancer-for-gitlab/issues/56)
 
 ## 4.9.2 - 2026.05 Build 3 (20/05/2026)
 

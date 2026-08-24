@@ -95,13 +95,13 @@ export const usePageDetectionStore = defineStore(`${APP_NAMESPACE}/pageDetection
         const path = pathname.value;
         const hasIid = !!iid.value;
 
-        if (path.includes('/dashboard/issues')) {
+        if (path.includes('/dashboard/issues') || path.includes('/dashboard/work_items')) {
             return PageType.DASHBOARD_ISSUES;
         } else if (path.includes('/dashboard/merge_requests')) {
             return PageType.DASHBOARD_MERGE_REQUESTS;
         } else if (path.includes('/dashboard/todos')) {
             return PageType.DASHBOARD_TODOS;
-        } else if (path.includes('/groups/') && path.includes('/issues')) {
+        } else if (path.includes('/groups/') && (path.includes('/issues') || path.includes('/work_items'))) {
             return PageType.GROUP_ISSUES;
         } else if (path.includes('/groups/') && path.includes('/merge_requests')) {
             return PageType.GROUP_MERGE_REQUESTS;

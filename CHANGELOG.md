@@ -4,6 +4,12 @@
 
 GitLab is gradually updating its UI as part of the "work items" overhaul. Since this extension heavily depends on the DOM, some features might not function properly with the new UI. I only have access to the GitLab version used at our company, so I might not catch every change. I'm working on fixing the broken features one by one, while trying to make it backwards compatible which I cannot verify.
 
+## 4.11.0 - 2026.09 Build 1 (02/09/2026)
+
+### ✨ Features
+
+- **mr**: quick reaction buttons on open threads. Configurable emoji list (comma separated), defaults to thumbsup/thumbsdown.
+
 ## 4.10.1 - 2026.08 Build 2 (24/08/2026)
 
 ### 🪲 Bug Fixes

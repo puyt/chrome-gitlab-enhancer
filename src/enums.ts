@@ -35,6 +35,7 @@ export const enum Preference {
     MR_DIM_DRAFT = 'mr_dim_draft',
     MR_HOTKEY_VIEWED = 'mr_hotkey_viewed',
     MR_HOTKEY_VIEWED_NEXT = 'mr_hotkey_viewed_next',
+    MR_QUICK_REACTIONS = 'mr_quick_reactions',
 }
 
 export const enum PageType {

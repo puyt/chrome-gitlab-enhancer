@@ -34,6 +34,13 @@
         />
 
         <StarIssueBoards v-if="isStarIssueBoardsEnabled" />
+
+        <QuickReactions
+            v-if="isQuickReactionsEnabled && isMergeRequestPage && iid"
+            :current-project-path="projectPath"
+            :csrf-token="csrfToken"
+            :iid="iid"
+        />
     </div>
 </template>
 
@@ -52,6 +59,7 @@
     import MergeRequestDetail from './components/MergeRequestDetail.vue';
     import MyUnresolvedThreads from './components/MyUnresolvedThreads.vue';
     import Preferences from './components/Preferences.vue';
+    import QuickReactions from './components/QuickReactions.vue';
     import ScopedLabelsDropdowns from './components/ScopedLabelsDropdowns.vue';
     import StarIssueBoards from './components/StarIssueBoards.vue';
     import TodoList from './components/TodoList.vue';
@@ -63,6 +71,7 @@
     import { useRenameProjectInIssueBoards } from './composables/useRenameProjectInIssueBoards';
     import { useRenderProjectAvatarIssues } from './composables/useRenderProjectAvatarIssues';
     import { useShowEpicAssignees } from './composables/useShowEpicAssignees';
+    import { DEFAULT_QUICK_REACTIONS } from './constants';
     import {
         BrowserMessageType,
         MittEventKey,
@@ -107,6 +116,7 @@
 
     const isScopedLabelsDropdownEnabled = computed(() => getSetting(Preference.GENERAL_SCOPED_LABELS_DROPDOWN, true) && csrfToken.value && (isBoardPage.value || (effectiveIid.value && (isMergeRequestPage.value || isIssuePage.value))));
     const isStarIssueBoardsEnabled = computed(() => getSetting(Preference.ISSUE_STAR_BOARDS, true) && isBoardPage.value);
+    const isQuickReactionsEnabled = computed(() => !!(getSetting(Preference.MR_QUICK_REACTIONS, DEFAULT_QUICK_REACTIONS) as string || '').trim());
 
     function checkIsMrIssueOverviewReady() {
         isMrIssueOverviewReady.value = !!document.querySelector('ul.issuable-list > li:first-child .issuable-reference, div[data-testid="merge-request-dashboard-tab"] div[data-testid="merge-request"]');

@@ -203,6 +203,7 @@
         mdiCommentCheckOutline,
         mdiCommentTextMultipleOutline,
         mdiDeleteOutline,
+        mdiEmoticonOutline,
         mdiFlagOutline,
         mdiFormTextbox,
         mdiGithub,
@@ -231,6 +232,7 @@
         gSvgStar,
         gSvgWeight,
     } from '../assets/icons';
+    import { DEFAULT_QUICK_REACTIONS } from '../constants';
     import { Preference } from '../enums';
     import { useExtensionStore } from '../store';
     import GToggle from './GToggle.vue';
@@ -553,6 +555,15 @@
                 isGitlabIcon: false,
                 iconClassName: '',
                 defaultValue: true,
+            },
+            {
+                label: 'Quick reactions',
+                title: 'Comma separated emoji names to show on open threads, e.g. thumbsup,thumbsdown. Leave empty to disable.',
+                key: Preference.MR_QUICK_REACTIONS,
+                icon: mdiEmoticonOutline,
+                isGitlabIcon: false,
+                iconClassName: '',
+                defaultValue: DEFAULT_QUICK_REACTIONS,
             },
         ],
     };

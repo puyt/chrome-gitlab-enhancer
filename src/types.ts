@@ -126,3 +126,13 @@ export interface GitLabDiscussionNote {
     noteable_iid: number;
     commands_changes: Record<string, any>;
 }
+
+export interface GitLabAwardEmoji {
+    id: number;
+    name: string;
+    user: GitlabUser;
+    created_at: string;
+    updated_at: string;
+    awardable_id: number;
+    awardable_type: string;
+}

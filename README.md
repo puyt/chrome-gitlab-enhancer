@@ -48,6 +48,7 @@ I only have access to the GitLab version used at our company, so I might not cat
 
 - Highlight your MRs
 - Use "Threads" in favor of "Comments" by default
+- Separate draft merge requests into their own tab
 - Draft merge requests are visually dimmed, making them stand out less and helping you focus on ready-to-review items.
 - Render project logos in group overviews
 - Show unresolved threads in the overview & detail

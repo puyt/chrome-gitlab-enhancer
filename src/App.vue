@@ -70,6 +70,7 @@
     import { usePersistentFilters } from './composables/usePersistentFilters';
     import { useRenameProjectInIssueBoards } from './composables/useRenameProjectInIssueBoards';
     import { useRenderProjectAvatarIssues } from './composables/useRenderProjectAvatarIssues';
+    import { useSeparateDraftMrs } from './composables/useSeparateDraftMrs';
     import { useShowEpicAssignees } from './composables/useShowEpicAssignees';
     import { DEFAULT_QUICK_REACTIONS } from './constants';
     import {
@@ -109,6 +110,7 @@
     const { rename: renameProjectIssueBoards } = useRenameProjectInIssueBoards();
     const { highlight: highlightMyIssuesMrs } = useHighlightMyIssuesMrs();
     const { dim: dimDraftMrs } = useDimDraftMrs();
+    const { render: renderDraftMrsTab } = useSeparateDraftMrs();
     const { render: renderEpicAssignees } = useShowEpicAssignees();
 
     const csrfToken = ref('');
@@ -138,6 +140,7 @@
                 renameProjectIssueBoards();
                 highlightMyIssuesMrs(gitlabUsername.value);
                 dimDraftMrs();
+                renderDraftMrsTab();
                 renderEpicAssignees();
 
                 useHighlightMyApprovals(gitlabUserId.value);

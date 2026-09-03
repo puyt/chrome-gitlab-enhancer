@@ -213,6 +213,7 @@
         mdiMapMarkerOutline,
         mdiScriptTextOutline,
         mdiStarOutline,
+        mdiTabPlus,
     } from '@mdi/js';
     import { onClickOutside } from '@vueuse/core';
     import showdown from 'showdown'; //eslint-disable-line
@@ -537,6 +538,15 @@
                 isGitlabIcon: false,
                 iconClassName: '',
                 defaultValue: true,
+            },
+            {
+                label: 'Separate drafts into their own tab',
+                title: 'Keeps draft merge requests out of the Open tab',
+                key: Preference.MR_SEPARATE_DRAFTS,
+                icon: mdiTabPlus,
+                isGitlabIcon: false,
+                iconClassName: '',
+                defaultValue: false,
             },
             {
                 label: 'Hotkey mark as viewed',
